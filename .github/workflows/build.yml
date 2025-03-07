@@ -1,0 +1,23 @@
+name: Java CI Workflow
+
+on: push
+
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Compile Java Code
+        run: javac src/main/java/com/sheridan/App.java
+
+      - name: Run Java Application
+        run: java -cp src/main/java com.sheridan.App
